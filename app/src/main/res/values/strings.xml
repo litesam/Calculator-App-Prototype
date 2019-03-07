@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Calculator App</string>
+    <string name="left_value">Left Value</string>
+    <string name="right_value">Right Value</string>
+    <string name="addition_button">+</string>
+    <string name="subtraction_button">-</string>
+    <string name="multiplication_button">*</string>
+    <string name="division_button">/</string>
 </resources>
