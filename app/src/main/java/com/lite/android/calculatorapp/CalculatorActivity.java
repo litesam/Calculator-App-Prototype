@@ -17,8 +17,15 @@ public class CalculatorActivity extends AppCompatActivity {
     private Button mMultiplicationButton;
     private TextView mShowAnswer;
 
-    private float leftValue;
-    private float rightValue;
+    private Calculator mCalculator;
+
+    public void getOperands() {
+        mLeftValue = (EditText) findViewById(R.id.left_value_text_view);
+        mRightValue = (EditText) findViewById(R.id.right_value_text_view);
+
+        mCalculator = new Calculator(Float.parseFloat(mLeftValue.getText().toString()),
+                                    Float.parseFloat(mRightValue.getText().toString()));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +39,7 @@ public class CalculatorActivity extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                getOperands();
-               float result = leftValue + rightValue;
+               float result = mCalculator.getResult("+");
                mShowAnswer.setText("" + result);
            }
         });
@@ -42,7 +49,7 @@ public class CalculatorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getOperands();
-                float result = leftValue - rightValue;
+                float result = mCalculator.getResult("-");
                 mShowAnswer.setText("" + result);
             }
         });
@@ -52,7 +59,7 @@ public class CalculatorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getOperands();
-                float result = leftValue / rightValue;
+                float result = mCalculator.getResult("/");
                 mShowAnswer.setText("" + result);
             }
         });
@@ -62,17 +69,9 @@ public class CalculatorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getOperands();
-                float result = leftValue * rightValue;
+                float result = mCalculator.getResult("*");
                 mShowAnswer.setText("" + result);
             }
         });
-    }
-
-    public void getOperands() {
-        mLeftValue = (EditText) findViewById(R.id.left_value_text_view);
-        leftValue = Float.parseFloat(mLeftValue.getText().toString());
-
-        mRightValue = (EditText) findViewById(R.id.right_value_text_view);
-        rightValue = Float.parseFloat(mRightValue.getText().toString());
     }
 }
